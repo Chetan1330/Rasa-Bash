@@ -1,0 +1,200 @@
+# version: "3.1"
+
+# stories:
+
+# # - story: happy path
+# #   steps:
+# #   - intent: greet
+# #   - action: utter_greet
+# #   - intent: mood_great
+# #   - action: utter_happy
+
+# # - story: sad path 1
+# #   steps:
+# #   - intent: greet
+# #   - action: utter_greet
+# #   - intent: mood_unhappy
+# #   - action: utter_cheer_up
+# #   - action: utter_did_that_help
+# #   - intent: affirm
+# #   - action: utter_happy
+
+# # - story: sad path 2
+# #   steps:
+# #   - intent: greet
+# #   - action: utter_greet
+# #   - intent: mood_unhappy
+# #   - action: utter_cheer_up
+# #   - action: utter_did_that_help
+# #   - intent: deny
+# #   - action: utter_goodbye
+
+# # - story: onboarding project story
+# #   steps:
+# #   - intent: employee_on_boarding_to_project
+# #   - action: showing_project_lists_form
+# #   - active_loop: showing_project_lists_form
+# #   - slot_was_set:
+# #     - requested_slot: project_name
+# #   - slot_was_set:
+# #     - project_name: project1
+# #   - slot_was_set:
+# #     - requested_slot: null
+# #   - active_loop: null
+# #   - action: action_show_project_lists
+
+# - story: interactive_debug_host_story_1
+#   steps:
+#   - intent: debug_help_servers
+#   # - action: utter_greet
+#   # - intent: request_names
+#   - action: debug_host_form
+#   - active_loop: debug_host_form
+#   - slot_was_set:
+#     - requested_slot: debug_host_name
+#   - slot_was_set:
+#     - debug_host_name: "localhost"
+#   - slot_was_set:
+#     - requested_slot: debug_host_username
+#   - slot_was_set:
+#     - debug_host_username: vforvendetta
+#   - slot_was_set:
+#     - requested_slot: debug_host_password
+#   - slot_was_set:
+#     - debug_host_password: pforpassword
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_debug_host_username_and_password 
+#   - action: debug_proceed_form
+#   - active_loop: debug_proceed_form
+
+
+version: "3.1"
+
+stories:
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+# - story: onboarding project story
+#   steps:
+#   - intent: employee_on_boarding_to_project
+#   - action: showing_project_lists_form
+#   - active_loop: showing_project_lists_form
+#   - slot_was_set:
+#     - requested_slot: project_name
+#   - slot_was_set:
+#     - project_name: project1
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_show_project_lists
+
+- story: interactive_debug_host_story_1
+  steps:
+  - intent: debug_help_servers
+  # - action: utter_greet
+  # - intent: request_names
+  - action: debug_host_form
+  - active_loop: debug_host_form
+  - slot_was_set:
+    - requested_slot: debug_host_name
+  - slot_was_set:
+    - debug_host_name: "localhost"
+  - slot_was_set:
+    - requested_slot: debug_host_username
+  - slot_was_set:
+    - debug_host_username: vforvendetta
+  - slot_was_set:
+    - requested_slot: debug_host_password
+  - slot_was_set:
+    - debug_host_password: pforpassword
+  - slot_was_set:
+    - requested_slot: ssh_command_option
+  - slot_was_set:
+    - ssh_command_option: hostname
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_debug_host_username_and_password 
+  - action: debug_proceed_form
+  - active_loop: debug_proceed_form
+  # - slot_was_set:
+  #   - requested_slot: debug_host_proceed
+  # - slot_was_set:
+  #   - requested_slot: null
+  # - active_loop: null
+  # - action: action_debug_host_validate
+  # - action: debug_host_command_form
+  # - active_loop: debug_host_command_form
+
+
+
+- story: interactive_chromeos_qna_story_1
+  steps:
+  - intent: chromeos_knowledge_base
+  # - action: utter_greet
+  # - intent: request_names
+  - action: chromeos_qna_form
+  - active_loop: chromeos_qna_form
+  - slot_was_set:
+    - requested_slot: chromeos_question
+  - slot_was_set:
+    - chromeos_question: "adding variable in using profile"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_chromeos_qna
+  - action: action_chromeos_qna_intent_trigger
+  - active_loop: action_chromeos_qna
+  # - action: utter_chromeos_question_submit_choice
+  # - action: debug_proceed_form
+  # - active_loop: debug_proceed_form
+
+
+
+- story: interactive_startree_qna_story_1
+  steps:
+  - intent: startree_knowledge_base
+  # - action: utter_greet
+  # - intent: request_names
+  - action: startree_qna_form
+  - active_loop: startree_qna_form
+  - slot_was_set:
+    - requested_slot: startree_question
+  - slot_was_set:
+    - startree_question: "adding variable in using profile"
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_startree_qna 
+  - action: action_startree_qna_intent_trigger
+  - active_loop: action_startree_qna
+  # - action: utter_startree_question_submit_choice
+  # - action: debug_proceed_form
+  # - active_loop: debug_proceed_form

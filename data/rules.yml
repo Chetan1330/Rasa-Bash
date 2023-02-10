@@ -1,0 +1,307 @@
+# version: "3.1"
+
+# rules:
+
+# - rule: Say goodbye anytime the user says goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: action_custom_test
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+
+# - rule: Activate debug host form
+#   steps:
+#   - intent: debug_help_servers
+#   # - action: utter_please_write_host_username
+#   - action: debug_host_form
+#   - active_loop: debug_host_form
+
+# - rule: Submit debug host form
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: debug_host_form
+#   steps:
+#   # Form is deactivated
+#   - action: debug_host_form
+#   # - action: action_brain_teaser_slot_fill
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # The actions we want to run when the form is submitted.
+#   - action: utter_debug_host_username_and_password 
+#   - action: debug_proceed_form
+#   - active_loop: debug_proceed_form
+
+# - rule: Submit debug proceed form
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: debug_proceed_form
+#   steps:
+#   # Form is deactivated
+#   - action: debug_proceed_form
+#   # - action: action_brain_teaser_slot_fill
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # The actions we want to run when the form is submitted.
+#   - action: action_debug_host_validate
+
+# - rule: Activate brain teaser form
+#   steps:
+#   - intent: greet
+#   - action: utter_presenting_brain_teaser
+#   - action: action_show_brain_teaser
+#   - action: brain_teaser_form
+#   - active_loop: brain_teaser_form
+
+# - rule: Activate brain teaser form 2
+#   steps:
+#   - intent: brain_teaser
+#   - action: utter_presenting_brain_teaser
+#   - action: action_show_brain_teaser
+#   - action: brain_teaser_form
+#   - active_loop: brain_teaser_form
+
+# - rule: Submit brain teaser form
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: brain_teaser_form
+#   steps:
+#   # Form is deactivated
+#   - action: brain_teaser_form
+#   # - action: action_brain_teaser_slot_fill
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # The actions we want to run when the form is submitted.
+#   - action: action_validate_brain_teaser_answer
+#   - action: utter_how_to_help
+
+# - rule: skip brain teaser rule
+#   steps:
+#   - intent: skip
+#   - action: utter_how_to_help
+
+# - rule: help
+#   steps:
+#   - intent: help
+#   - action: utter_all_usecases
+
+# # - rule: Activate showing project list form
+# #   steps:
+# #   # - intent: employee_on_boarding_to_project
+# #   - action: utter_please_write_project_name
+
+# #   - action: showing_project_lists_form
+# #   - active_loop: showing_project_lists_form
+
+# # - rule: Submit showing project list form
+# #   condition:
+# #   # Condition that form is active.
+# #   - active_loop: showing_project_lists_form
+# #   steps:
+# #   # Form is deactivated
+# #   - action: showing_project_lists_form
+# #   # - action: action_brain_teaser_slot_fill
+# #   - active_loop: null
+# #   - slot_was_set:
+# #     - requested_slot: null
+# #   # The actions we want to run when the form is submitted.
+# #   - action: action_show_project_lists
+
+
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: action_custom_test
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+
+
+
+
+
+- rule: Activate debug host form
+  steps:
+  - intent: debug_help_servers
+  # - action: utter_please_write_host_username
+  - action: debug_host_form
+  - active_loop: debug_host_form
+
+- rule: Submit debug host form
+  condition:
+  # Condition that form is active.
+  - active_loop: debug_host_form
+  steps:
+  # Form is deactivated
+  - action: debug_host_form
+  # - action: action_brain_teaser_slot_fill
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: utter_debug_host_username_and_password 
+  - action: debug_proceed_form
+  - active_loop: debug_proceed_form
+
+- rule: Submit debug proceed form
+  condition:
+  # Condition that form is active.
+  - active_loop: debug_proceed_form
+  steps:
+  # Form is deactivated
+  - action: debug_proceed_form
+  # - action: action_brain_teaser_slot_fill
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_debug_host_validate
+  # - action: debug_host_command_form
+  # - active_loop: debug_host_command_form
+
+
+# - rule: Submit debug host command form
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: debug_host_command_form
+#   steps:
+#   # Form is deactivated
+#   - action: debug_host_command_form
+#   # - action: action_brain_teaser_slot_fill
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # The actions we want to run when the form is submitted.
+#   - action: action_debug_host_execute_command 
+
+
+
+
+
+- rule: Activate brain teaser form
+  steps:
+  - intent: greet
+  # - action: utter_presenting_brain_teaser
+  - action: action_show_brain_teaser
+  - action: brain_teaser_form
+  - active_loop: brain_teaser_form
+
+- rule: Activate brain teaser form 2
+  steps:
+  - intent: brain_teaser
+  # - action: utter_presenting_brain_teaser
+  - action: action_show_brain_teaser
+  - action: brain_teaser_form
+  - active_loop: brain_teaser_form
+
+- rule: Submit brain teaser form
+  condition:
+  # Condition that form is active.
+  - active_loop: brain_teaser_form
+  steps:
+  # Form is deactivated
+  - action: brain_teaser_form
+  # - action: action_brain_teaser_slot_fill
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_validate_brain_teaser_answer
+  - action: utter_how_to_help
+
+- rule: skip brain teaser rule
+  steps:
+  - intent: skip
+  - action: utter_how_to_help
+
+- rule: help
+  steps:
+  - intent: help
+  - action: action_new
+
+# - rule: Activate showing project list form
+#   steps:
+#   # - intent: employee_on_boarding_to_project
+#   - action: utter_please_write_project_name
+
+#   - action: showing_project_lists_form
+#   - active_loop: showing_project_lists_form
+
+# - rule: Submit showing project list form
+#   condition:
+#   # Condition that form is active.
+#   - active_loop: showing_project_lists_form
+#   steps:
+#   # Form is deactivated
+#   - action: showing_project_lists_form
+#   # - action: action_brain_teaser_slot_fill
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   # The actions we want to run when the form is submitted.
+#   - action: action_show_project_lists
+
+
+- rule: Activate chromeos qna form
+  steps:
+  - intent: chromeos_knowledge_base
+  # - action: utter_presenting_brain_teaser
+  # - action: action_show_brain_teaser
+  - action: chromeos_qna_form
+  - active_loop: chromeos_qna_form
+
+
+- rule: Submit chromeos qna form
+  condition:
+  # Condition that form is active.
+  - active_loop: chromeos_qna_form
+  steps:
+  # Form is deactivated
+  - action: chromeos_qna_form
+  # - action: action_brain_teaser_slot_fill
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_chromeos_qna
+  - action: action_chromeos_qna_intent_trigger
+  # - action: utter_chromeos_question_submit_choice
+
+
+- rule: Activate startree qna form
+  steps:
+  - intent: startree_knowledge_base
+  # - action: utter_presenting_brain_teaser
+  # - action: action_show_brain_teaser
+  - action: startree_qna_form
+  - active_loop: startree_qna_form
+
+
+- rule: Submit startree qna form
+  condition:
+  # Condition that form is active.
+  - active_loop: startree_qna_form
+  steps:
+  # Form is deactivated
+  - action: startree_qna_form
+  # - action: action_brain_teaser_slot_fill
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: action_startree_qna
+  - action: action_startree_qna_intent_trigger
+  # - action: utter_startree_question_submit_choice

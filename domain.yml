@@ -1,0 +1,254 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - brain_teaser
+  - intent_brain_teaser_answer
+  - skip
+  - help
+  # - employee_on_boarding_to_project
+  # - execute_test_plan
+  - debug_help_servers
+  - debug_help_DUTs
+  - chromeos_knowledge_base
+  - startree_knowledge_base
+  - custom_action_test
+  - intent_debug_host_proceed
+  - intent_ssh_command_option
+
+entities:
+  - brain_teaser_answer
+  - ssh_command_option
+  - debug_host_proceed
+  # - chromeos_question
+
+  # - project_name
+  # - selected_project_list
+
+slots:
+  brain_teaser_answer:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: brain_teaser_answer
+  question_id:
+    type: text
+    mappings:
+    - type: custom
+  debug_host_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: debug_host_form
+        requested_slot: debug_host_name
+  debug_host_username:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: debug_host_form
+        requested_slot: debug_host_username
+  debug_host_password:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: debug_host_form
+        requested_slot: debug_host_password
+  ssh_command_option:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      # entity: ssh_command_option
+      conditions:
+      - active_loop: debug_host_form
+        requested_slot: ssh_command_option
+  debug_host_proceed:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      # entity: debug_host_proceed
+      conditions:
+      - active_loop: debug_proceed_form
+        requested_slot: debug_host_proceed
+  chromeos_question:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: chromeos_qna_form
+        requested_slot: chromeos_question
+  startree_question:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: startree_qna_form
+        requested_slot: startree_question
+  # project_name:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #   - type: from_entity
+  #     entity: project_name
+  #     conditions:
+  #     - active_loop: showing_project_lists_form
+
+forms:
+  brain_teaser_form:
+    required_slots:
+      - brain_teaser_answer
+      - question_id
+  # showing_project_lists_form:
+  #   required_slots:
+  #     - project_name
+  debug_host_form:
+    required_slots:
+      - debug_host_name
+      - debug_host_username
+      - debug_host_password
+      - ssh_command_option
+  debug_proceed_form:
+    required_slots:
+      - debug_host_proceed
+  chromeos_qna_form:
+    required_slots:
+      - chromeos_question
+  startree_qna_form:
+    required_slots:
+      - startree_question
+  # debug_host_command_form:
+  #   required_slots:
+  #     - ssh_command_option
+    # debug_host_username:
+    #   - type: from_text
+    # debug_host_password:
+    #   - type: from_text
+    # debug_host_name:
+    #   - type: from_text
+
+responses:
+  utter_greet:
+  - text: "Hey! How may I assist you?"
+  utter_did_that_help:
+  - text: "Did that help you?"
+  utter_happy:
+  - text: "Great, carry on!"
+  utter_goodbye:
+  - text: "Bye"
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  utter_how_to_help:
+  - text: "How can I assist you? Type 'help' for suggestions."
+  utter_select_brain_teaser_answer:
+  - text: "Please select the correct answer."
+  utter_presenting_brain_teaser:
+  - text: "Here is a brain teaser. Type 'skip' to ignore."
+  utter_all_usecases:
+  - text: "Alright, here are the funtions you can perform: \n"
+    buttons:
+    # - title: "Join project for todo list/access request lists"
+    #   payload: /employee_on_boarding_to_project
+    # - title: "Execute Test Plan"
+    #   payload: /execute_test_plan
+    # - title: "Debug a host"
+    #   payload: /debug_help_servers
+    # - title: "Debug a DUT"
+    #   payload: /debug_help_DUTs
+    - title: "ChromeOS bot"
+      payload: /chromeos_knowledge_base
+      button_intents:
+        - chromeos_knowledge_base
+    - title: "StarTree bot"
+      payload: /startree_knowledge_base
+      button_intents:
+        - startree_knowledge_base
+    - title: "Debug"
+      payload: /debug_help_servers
+      button_intents:
+        - debug_help_servers
+  # utter_please_write_project_name:
+  # - text: "Please write the project name:"
+  utter_ask_debug_host_name:
+  - text: "Please write the host name:"
+  utter_ask_debug_host_username:
+  - text: "Please write the host username:"
+  utter_ask_debug_host_password:
+  - text: "Please write the host password:"
+
+  utter_debug_host_username_and_password: 
+  - text: |
+      host: "{debug_host_name}"
+      username: "{debug_host_username}" 
+      password: "{debug_host_password}" 
+      command: "{ssh_command_option}"
+  utter_ask_chromeos_question:
+  - text: "Please write a question for ChromeOS knowledgebase."
+  
+  utter_ask_startree_question:
+  - text: "Please write a question for StarTree knowledgebase."
+
+  utter_chromeos_question_submit_choice:
+  - text: "want to submit another question?\n"
+    buttons:
+    - title: "Yes"
+      payload: /chromeos_knowledge_base
+      button_intents:
+        - chromeos_knowledge_base
+    - title: "No"
+      payload: /goodbye
+      button_intents:
+        - goodbye
+
+  utter_startree_question_submit_choice:
+  - text: "want to submit another question?\n"
+    buttons:
+    - title: "Yes"
+      payload: /startree_knowledge_base
+      button_intents:
+        - startree_knowledge_base
+    - title: "No"
+      payload: /goodbye
+      button_intents:
+        - goodbye
+
+  utter_thank_you_admin:
+  - text: "Thank you."
+
+
+actions:
+  - action_show_brain_teaser
+  - action_validate_brain_teaser_answer
+  # - action_show_project_lists
+  - action_custom_test
+  - utter_debug_host_username_and_password
+  - action_debug_host_validate
+  # - action_debug_host_execute_command
+  - action_chromeos_qna
+  - action_chromeos_qna_intent_trigger
+  - action_startree_qna
+  - action_startree_qna_intent_trigger
+  - action_new
+  - debug_new
+  - action_ask_ssh_command_option
+  - action_ask_debug_host_proceed
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false

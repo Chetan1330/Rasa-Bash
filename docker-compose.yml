@@ -1,0 +1,55 @@
+version: '3.0'
+services:
+    rasa-server:
+      container_name: "rasa-server"
+      # user: root
+      build: 
+        context:  .
+      volumes:
+      - ./:/app
+      # networks:
+      #   - web
+      #   - rasa-network
+      ports: 
+        - 5006:5005
+    action-server:
+      container_name: "action-server"
+      build: 
+        context: actions
+      volumes:
+        - ./actions:/app/actions
+        - ./data:/app/data
+      ports:
+        - 5055:5055
+    web-server:
+      container_name: "web-app"
+      build:
+        context: web_app
+      volumes:
+        - ./web_app:/app
+      ports:
+        - 8080:8080
+      # labels:
+      #   dev.okteto.com/auto-ingress: "true"
+    # mongodb-server:
+    #   # image: mongo:5.0.6
+
+    #   container_name: "mongodb-server"
+    #   build:
+    #     context: mongodbdata
+    #   restart: unless-stopped
+    #   # command: mongod --auth
+    #   environment:
+    #     MONGO_INITDB_ROOT_USERNAME: workbotadmin
+    #     MONGO_INITDB_ROOT_PASSWORD: workbotpass@22_
+    #     MONGO_INITDB_DATABASE: workbot_assistant_db
+    #     MONGODB_DATA_DIR: /data/db
+    #     MONDODB_LOG_DIR: /dev/null
+    #   volumes:
+    #     - ./mongodbdata/data:/data/db
+    #   ports:
+    #     - 27017:27017
+# networks:
+#   rasa-network:
+#   web:
+#     external: true     

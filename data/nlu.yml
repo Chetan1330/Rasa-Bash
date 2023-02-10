@@ -1,0 +1,193 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - start
+    - start start
+    - startt
+    - /start
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: brain_teaser
+  examples: |
+    - give me some brain teasers
+    - show me a quiz
+    - show me brain teaser
+    - give me some puzzle
+    - ask me a puzzle
+    - i want to solve a brain teaser
+    - brain teaser
+    - puzzle
+
+- intent: skip
+  examples: |
+    - skip
+    - i want to skip
+    - please skip
+    - ignore
+    - skip question
+    - skip please
+    - just skip
+    - Exit
+    - Stop
+    - exit
+    - exit now
+    - exit please
+    - exit bot
+    - reset
+    - reset now
+    - reset bot
+    - reset please
+    - restart
+    - restart now
+    - restart bot
+    - restart please
+
+- intent: intent_brain_teaser_answer
+  examples: |
+    - [star] {"brain_teaser_answer" : "star"}
+    - [fermi] {"brain_teaser_answer" : "fermi"}
+    - [tesla] {"brain_teaser_answer" : "tesla"}
+    - [worm hole] {"brain_teaser_answer" : "worm hole"}
+
+- intent: help
+  examples: |
+    - help
+    - Help
+    - please help
+    - suggestions
+    - show all functions
+    - help me
+    - plz help
+    - suggest some functions
+    - help me please
+    - i don't know what to do
+    - what to do
+    - how can you help me
+
+- intent: debug_help_servers
+  examples: |
+    - debug a host
+    - Debug
+    - debug host
+    - please debug a host
+    - debug host server
+
+- intent: intent_debug_host_proceed
+  examples: |
+    - [no] {"debug_host_proceed" : "no"}
+    - [yes] {"debug_host_proceed" : "yes"}
+    - [No] {"debug_host_proceed" : "No"}
+    - [Yes] {"debug_host_proceed" : "Yes"}
+
+
+- intent: intent_ssh_command_option
+  examples: |
+    - [hostname] {"ssh_command_option" : "hostname"}
+#    - [ss -ltn] {"ssh_command_option" : "ss -ltn"}
+#    - [cat /proc/meminfo] {"ssh_command_option" : "cat /proc/meminfo"}
+#    - [df] {"ssh_command_option" : "df"}
+
+
+- intent: chromeos_knowledge_base
+  examples: |
+    - ChromeOS Bot
+    - chromeos
+    - chromeos question
+    - chromeos qna
+    - chromeos bot
+
+
+- intent: startree_knowledge_base
+  examples: |
+    - Startree Bot
+    - startree
+    - startree question
+    - startree qna
+    - startree bot
